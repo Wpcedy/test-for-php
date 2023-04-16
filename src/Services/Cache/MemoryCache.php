@@ -18,12 +18,18 @@ class MemoryCache implements LocalCache
 
   public function getCache(string $key): mixed
   {
-    return $this->server->get($key);
+    if (!class_exists('Memcache')) {
+      return null;
+    }
+    if ($this->checkIfCacheExists($key)) {
+      return $this->server->get($key);
+    }
+    return null;
   }
 
   public function setCache(string $key, mixed $value)
   {
-    if(!class_exists('Memcache')){
+    if (!class_exists('Memcache')) {
       return;
     }
     $this->server->setCache($key, $value, false, 3600);
@@ -31,7 +37,7 @@ class MemoryCache implements LocalCache
 
   public function checkIfCacheExists(string $key): bool
   {
-    if(!class_exists('Memcache')){
+    if (!class_exists('Memcache')) {
       return false;
     }
     $this->server->get($key);

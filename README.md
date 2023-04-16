@@ -16,6 +16,7 @@ Além disso, o desenvolvedor deve criar uma interface para implementar um recurs
 diferentes usando a mesma interface, uma em memória e outra em arquivo.
 
 ## Observação
+
 Importante ressaltar que não é permitido o uso de pacotes externos, apenas o phpunit pode ser utilizado para 
 criar os testes de unidade.
 
@@ -37,3 +38,17 @@ Para realizar o teste, siga os seguintes passos:
 * Nos avise por e-mail quando finalizar o teste. Não é necessário criar uma pull request.
 
 Este teste foi projetado para avaliar suas habilidades em PHP, orientação a objetos, design patterns e boas práticas de programação. Boa sorte e divirta-se!
+
+## Resolução
+
+Como eu não conhecia o projeto decidi seguir por etapas, a primeira foi o teste prático, onde eu usei e testei todas as
+requests para ver como reagiriam. Após ver elas funcionando defini o como iria separar elas e adicionei uma nova função
+que todas elas usariam que seria o `makeRequest`.
+
+Com a estrutura inicial feita decidi testar as formas de fazer cache para ter uma melhor noção de como estruturar a sua
+utilização. A primeira foi o cache em memória usando o `Memcached` e a outra foi o cache em arquivo usando o PHP puro,
+com tudo pesquisado, testado e organizado criei a interface deles e criei o `CacheService` que o `HttpRequest` vai
+estender para conseguir fazer o cache sem se preocupar com qual tipo de cache vai ser (um detalhe importante o
+`CacheService` vai pegar da configuração qual o tipo de cache será feito).
+
+Com tudo planejado e estruturado bastou codificar, e como etapa final falta pesquisar e criar os testes com o PHPUnit.

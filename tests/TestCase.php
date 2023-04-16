@@ -10,6 +10,6 @@ class TestCase extends PHPUnit
 {
     public function testExampleTrue(): void
     {
-        $this->assertTrue(true);
+        $this->assertTrue(false);
     }
 }

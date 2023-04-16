@@ -27,7 +27,7 @@ class HttpRequest extends CacheService
   {
     $key = strtoupper($method) . '-' . $url;
 
-    if ($this->cacheHandler->checkIfCacheExists()) {
+    if ($this->cacheHandler->checkIfCacheExists($key)) {
       $response = $this->cacheHandler->getCache($key);
     } else {
       $response = $this->makeRequest($method, $url, $parameters, $data);
@@ -49,7 +49,7 @@ class HttpRequest extends CacheService
   {
     $key = strtoupper($method) . '-' . $url;
 
-    if ($this->cacheHandler->checkIfCacheExists()) {
+    if ($this->cacheHandler->checkIfCacheExists($key)) {
       $response = $this->cacheHandler->getCache($key);
     } else {
       $response = $this->makeRequest($method, $url, $parameters, $data);
@@ -64,7 +64,7 @@ class HttpRequest extends CacheService
   {
     $key = strtoupper($method) . '-' . $url;
 
-    if ($this->cacheHandler->checkIfCacheExists()) {
+    if ($this->cacheHandler->checkIfCacheExists($key)) {
       $response = $this->cacheHandler->getCache($key);
     } else {
       $response = $this->makeRequest($method, $url, $parameters, $data);
